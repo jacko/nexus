@@ -4,6 +4,8 @@ Decentralized P2P chat and file-sharing desktop application.
 
 Built with Electron + React + TypeScript on the frontend and Rust (libp2p) for peer-to-peer networking. A hub server handles signaling, room chat, and user discovery, while direct messages and file transfers go peer-to-peer.
 
+![Nexus](docs/main_screen.png)
+
 ## Project Structure
 
 ```
