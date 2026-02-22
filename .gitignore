@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Rust build artifacts
+target/
+
+# Native addon binaries (napi-rs)
+*.node
+
+# SQLite runtime databases
+*.db
+*.db-shm
+*.db-wal
+
+# Private keys & certificates
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Environment / secrets
+.env
+.env.*
+
+# Runtime / local data
+bootstrap-data/
+data/
+infra/hub/data/
+
+# OS / editor
+.DS_Store
+
+# Logs
+*.log
+*.log.*
