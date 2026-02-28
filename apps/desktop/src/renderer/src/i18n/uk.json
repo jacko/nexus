@@ -65,7 +65,7 @@
   "chat.roomPlaceholder": "Назва кімнати...",
   "chat.join": "Увійти",
   "chat.cancel": "Скасувати",
-  "chat.savedMessages": "Збережені повідомлення",
+  "chat.savedMessages": "Нотатки",
   "chat.savedDescription": "Зберігайте повідомлення, посилання та нотатки для себе.",
 
   "members.title": "УЧАСНИКИ",
@@ -187,7 +187,7 @@
   "header.peerConnected_few": "{{count}} піри підключено",
   "header.peerConnected_many": "{{count}} пірів підключено",
 
-  "tabs.saved": "Збережені",
+  "tabs.saved": "Нотатки",
 
   "whatsNew.title": "Що нового у {{version}}",
   "whatsNew.close": "Чудово!",

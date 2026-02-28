@@ -64,7 +64,7 @@
   "chat.roomPlaceholder": "Room name...",
   "chat.join": "Join",
   "chat.cancel": "Cancel",
-  "chat.savedMessages": "Saved Messages",
+  "chat.savedMessages": "Notes",
   "chat.savedDescription": "Save messages, links, and notes for yourself.",
 
   "members.title": "MEMBERS",
@@ -182,7 +182,7 @@
   "header.peerConnected_one": "{{count}} peer connected",
   "header.peerConnected_other": "{{count}} peers connected",
 
-  "tabs.saved": "Saved",
+  "tabs.saved": "Notes",
 
   "whatsNew.title": "What's New in {{version}}",
   "whatsNew.close": "Nice!",

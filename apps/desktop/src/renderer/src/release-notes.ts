@@ -6,6 +6,16 @@ export interface ReleaseNote {
 
 export const RELEASE_NOTES: ReleaseNote[] = [
   {
+    version: '1.8.0',
+    date: '2026-02-28',
+    highlights: [
+      'Auto-updates now served from GitHub Releases',
+      'CI/CD build pipelines for macOS, Windows, and Linux',
+      '"Saved" tab renamed to "Notes"',
+      'Fixed channel messages duplicating on reconnect'
+    ]
+  },
+  {
     version: '1.7.0',
     date: '2026-02-13',
     highlights: [
