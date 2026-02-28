@@ -84,10 +84,28 @@ jobs:
           cd apps/desktop/dist
           VERSION=${GITHUB_REF_NAME#v}
           LABEL="${{ matrix.artifact-label }}"
+
+          # Rename user-facing downloads
           for f in *.dmg; do [ -f "$f" ] && mv "$f" "nexus-${VERSION}-${LABEL}.dmg"; done || true
           for f in *.exe; do [ -f "$f" ] && mv "$f" "nexus-${VERSION}-${LABEL}-setup.exe"; done || true
           for f in *.AppImage; do [ -f "$f" ] && mv "$f" "nexus-${VERSION}-${LABEL}.AppImage"; done || true
           for f in *.deb; do [ -f "$f" ] && mv "$f" "nexus-${VERSION}-${LABEL}.deb"; done || true
+
+          # Rename auto-update zip (macOS)
+          for f in *.zip; do [ -f "$f" ] && mv "$f" "nexus-${VERSION}-${LABEL}.zip"; done || true
+
+          # Update yml manifests to reference renamed files
+          for yml in latest*.yml; do
+            [ -f "$yml" ] || continue
+            sed -i.bak "s|url: .*\\.exe|url: nexus-${VERSION}-${LABEL}-setup.exe|" "$yml"
+            sed -i.bak "s|url: .*\\.zip|url: nexus-${VERSION}-${LABEL}.zip|" "$yml"
+            sed -i.bak "s|url: .*\\.AppImage|url: nexus-${VERSION}-${LABEL}.AppImage|" "$yml"
+            sed -i.bak "s|path: .*|path: nexus-${VERSION}-${LABEL}|" "$yml"
+            rm -f "$yml.bak"
+          done
+
+          # Clean up blockmaps
+          rm -f *.blockmap
           ls -la
 
       - name: Upload to Release
@@ -95,5 +113,6 @@ jobs:
         with:
           files: |
             apps/desktop/dist/nexus-*
+            apps/desktop/dist/latest*.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

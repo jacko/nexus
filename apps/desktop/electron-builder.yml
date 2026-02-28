@@ -41,5 +41,4 @@ appImage:
 afterPack: scripts/afterPack.js
 npmRebuild: false
 publish:
-  provider: generic
-  url: https://voyt.dev/nexus-update
+  provider: github
