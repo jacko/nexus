@@ -58,7 +58,6 @@ pub struct NexusBehaviour {
 pub struct P2PNodeInner {
     pub cmd_tx: mpsc::Sender<NodeCommand>,
     pub peer_id: PeerId,
-    pub nickname: Arc<Mutex<String>>,
 }
 
 impl P2PNodeInner {
@@ -135,18 +134,16 @@ impl P2PNodeInner {
             .build();
 
         let (cmd_tx, cmd_rx) = mpsc::channel(256);
-        let nick_clone = nickname.clone();
         let peer_id_str = peer_id.to_string();
         let config_clone = config;
 
         tokio::spawn(async move {
-            run_event_loop(swarm, cmd_rx, config_clone, nick_clone, peer_id_str, emit).await;
+            run_event_loop(swarm, cmd_rx, config_clone, nickname, peer_id_str, emit).await;
         });
 
         Ok(Self {
             cmd_tx,
             peer_id,
-            nickname,
         })
     }
 }
