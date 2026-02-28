@@ -42,3 +42,5 @@ afterPack: scripts/afterPack.js
 npmRebuild: false
 publish:
   provider: github
+  owner: jacko
+  repo: nexus

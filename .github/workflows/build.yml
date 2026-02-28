@@ -56,12 +56,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libnss3-dev libatk-bridge2.0-dev libdrm-dev libgbm-dev libasound2-dev
 
+      - name: Cache Electron
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/electron
+          key: electron-${{ runner.os }}-${{ runner.arch }}
+
       - name: Install npm dependencies
         shell: bash
         run: |
           rm -f package-lock.json
           npm install --ignore-scripts
           node node_modules/electron/install.js
+        env:
+          ELECTRON_CACHE: ~/.cache/electron
 
       - name: Build native addon (p2p-core)
         working-directory: packages/p2p-core
@@ -77,6 +85,7 @@ jobs:
           ../../node_modules/.bin/electron-builder ${{ matrix.builder-args }} --publish never -c.electronVersion=$ELECTRON_VER
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ELECTRON_CACHE: ~/.cache/electron
 
       - name: Rename artifacts
         shell: bash
